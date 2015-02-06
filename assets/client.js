@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 function scrollBottom() {
 	$("#chat-window").animate({
-		scrollTop: $(document).height()
+		scrollTop: $("#chat-window").height()
 	});
 }
 

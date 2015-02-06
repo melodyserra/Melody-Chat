@@ -1,5 +1,10 @@
 $(document).ready(function() {
-	$("#username-modal").modal("show");
+	$("#username-modal").modal({
+		show: true,
+		backdrop: "static",
+		keyboard: false
+	});
+
 	scrollBottom();
 });
 
@@ -33,7 +38,7 @@ $(document).on("keyup", "#username-input", function(event) {
 
 function resizeChat() {
 	$("#chat-wrapper").css("height", $(window).height());
-	$("#chat-window").css("height", ($(window).height() - 80));
+	$("#chat-window").css("height", ($(window).height() - 90));
 }
 
 resizeChat();
@@ -68,6 +73,8 @@ function sendMessage() {
 
 	var html = chatTemplate(chatInfo);
 	$("#chat-window").append(html);
+
+	scrollBottom();
 }
 
 $(document).on("click", "#send-message-button", function(event) {

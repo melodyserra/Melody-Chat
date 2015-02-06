@@ -55,6 +55,7 @@ var socket = io();
 socket.on("chat", function(chatInfo) {
 	var html = chatTemplate(chatInfo);
 	$("#chat-window").append(html);
+	scrollBottom();
 });
 
 function sendMessage() {

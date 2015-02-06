@@ -1,0 +1,36 @@
+.clear {
+	clear:both;
+}
+
+#chat-wrapper {
+	border:#CCC 5px solid;
+	position:relative;
+}
+
+#chat-input-container {
+	position:absolute;
+	bottom:20px;
+	left:0;
+	width:100%;
+}
+
+.txt-right {
+	text-align:right;
+}
+
+#chat-window {
+	width:100%;
+	overflow-y:scroll;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+.chat-row {
+	padding:20px;
+}
+
+.chat-row:nth-child(odd) {
+	background-color:#EBEBEB;
+}

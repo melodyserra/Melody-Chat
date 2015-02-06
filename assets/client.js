@@ -1,9 +1,29 @@
+var chatTemplate;
+
 $(document).ready(function() {
-	$("#username-modal").modal({
-		show: true,
-		backdrop: "static",
-		keyboard: false
-	});
+	var chatTemplateSource = $("#chat-row-template").html();
+	chatTemplate = Handlebars.compile(chatTemplateSource);
+
+	if (!localStorage.getItem("username")) {
+		$("#username-modal").modal({
+			show: true,
+			backdrop: "static",
+			keyboard: false
+		});
+	}
+
+	var allChats = localStorage.getItem("all_chats");
+
+	if (allChats) {
+		var chats = JSON.parse(allChats);
+
+		chats.forEach(function(chat) {
+			var html = chatTemplate(chat);
+			$("#chat-window").append(html);
+		});
+	}
+
+	resizeChat();
 
 	scrollBottom();
 });
@@ -15,7 +35,7 @@ function scrollBottom() {
 }
 
 function submitUsername() {
-	if ($("#username-input").val() === "") {
+	if ($("#username-input").val() === "" || localStorage.getItem("username")) {
 		return false;
 	}
 
@@ -41,14 +61,9 @@ function resizeChat() {
 	$("#chat-window").css("height", ($(window).height() - 90));
 }
 
-resizeChat();
-
 $(window).resize(function() {
 	resizeChat();
 });
-
-var chatTemplateSource = $("#chat-row-template").html();
-var chatTemplate = Handlebars.compile(chatTemplateSource);
 
 var socket = io();
 
@@ -57,6 +72,20 @@ socket.on("chat", function(chatInfo) {
 	$("#chat-window").append(html);
 	scrollBottom();
 });
+
+function addToStorage(chatInfo) {
+	var allChats = localStorage.getItem("all_chats");
+
+	if (allChats) {
+		var chatJson = JSON.parse(allChats);
+		chatJson.push(chatInfo);
+		localStorage.setItem("all_chats", JSON.stringify(chatJson));
+	} else {
+		allChats = [];
+		allChats.push(chatInfo);
+		localStorage.setItem("all_chats", JSON.stringify(allChats));
+	}
+}
 
 function sendMessage() {
 	if ($("#chat-input").val() === "") {
@@ -76,6 +105,8 @@ function sendMessage() {
 	$("#chat-window").append(html);
 
 	scrollBottom();
+
+	addToStorage(chatInfo);
 }
 
 $(document).on("click", "#send-message-button", function(event) {

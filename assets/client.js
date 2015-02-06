@@ -71,6 +71,8 @@ socket.on("chat", function(chatInfo) {
 	var html = chatTemplate(chatInfo);
 	$("#chat-window").append(html);
 	scrollBottom();
+
+	addToStorage(chatInfo);
 });
 
 function addToStorage(chatInfo) {

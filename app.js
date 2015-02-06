@@ -17,4 +17,4 @@ io.on('connection', function(socket) {
 	});
 });
 
-http.listen(3000);
+http.listen(80);

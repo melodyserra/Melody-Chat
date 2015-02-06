@@ -34,3 +34,7 @@
 .chat-row:nth-child(odd) {
 	background-color:#EBEBEB;
 }
+
+#cat-img {
+	margin-top:-15px;
+}

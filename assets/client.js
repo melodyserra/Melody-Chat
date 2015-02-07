@@ -65,6 +65,18 @@ $(window).resize(function() {
 	resizeChat();
 });
 
+var titleInterval;
+
+function startTitleInterval(name) {
+	titleInterval = setInterval(function() {
+		$("title").html(name + " says...");
+
+		setTimeout(function() {
+			$("title").html("Melody's Chat!");
+		}, 1000);
+	}, 1500);
+}
+
 var socket = io();
 
 socket.on("chat", function(chatInfo) {
@@ -73,6 +85,8 @@ socket.on("chat", function(chatInfo) {
 	scrollBottom();
 
 	addToStorage(chatInfo);
+
+	startTitleInterval(chatInfo.userName);
 });
 
 function addToStorage(chatInfo) {
@@ -121,4 +135,9 @@ $(document).on("keyup", "#chat-input", function(event) {
 	if (event.which === 13) {
 		sendMessage();
 	}
+});
+
+$(document).on("focus", "#chat-input", function() {
+	$("title").html("Melody's Chat!");
+	clearInterval(titleInterval);
 });

@@ -86,7 +86,7 @@ socket.on("chat", function(chatInfo) {
 
 	addToStorage(chatInfo);
 
-	startTitleInterval(chatInfo.userName);
+	//startTitleInterval(chatInfo.userName);
 });
 
 function addToStorage(chatInfo) {

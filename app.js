@@ -11,6 +11,10 @@ app.get("/", function(req, res) {
 	res.render("index");
 });
 
+app.get("/success", function(req, res) {
+	res.render("logout");
+});
+
 io.on('connection', function(socket) {
 	socket.on('chat', function(chatInfo) {
 		socket.broadcast.emit('chat', chatInfo);

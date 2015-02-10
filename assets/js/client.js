@@ -137,7 +137,29 @@ $(document).on("keyup", "#chat-input", function(event) {
 	}
 });
 
+//Clear title changing
+
 $(document).on("focus", "#chat-input", function() {
 	$("title").html("Melody's Chat!");
 	clearInterval(titleInterval);
+});
+
+//Clear session
+
+$(document).on("click", "#cat-img", function() {
+	var that = this;
+	$(this).addClass("rotate");
+
+	setTimeout(function() {
+		$(that).removeClass("rotate");
+		$("#signout-modal").modal("show");
+	}, 1000);
+});
+
+$(document).on("click", "#sign-out-button", function(event) {
+	event.preventDefault();
+
+	localStorage.clear();
+
+	window.location.href = "/success";
 });

@@ -9,7 +9,7 @@
 
 #chat-input-container {
 	position:absolute;
-	bottom:20px;
+	bottom:0;
 	left:0;
 	width:100%;
 }
@@ -36,5 +36,14 @@
 }
 
 #cat-img {
-	margin-top:-15px;
+	margin-top:-17px;
+}
+
+.rotate {
+	transform:rotate(720deg);
+	transition:all 1s ease-in-out;
+}
+
+#cat-img:hover {
+	cursor:pointer;
 }

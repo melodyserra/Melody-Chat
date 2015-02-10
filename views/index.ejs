@@ -9,7 +9,7 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
@@ -56,6 +56,23 @@
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<div id="signout-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Confirm Sign Out</h4>
+			</div>
+			<div class="modal-body">
+				<h2>Are you sure you want to sign out and clear your session?</h2>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button id="sign-out-button" type="button" class="btn btn-primary">Sign Out</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -64,7 +81,7 @@
 
 <script src="libraries/handlebars-v2.0.0.js"></script>
 
-<script src="client.js"></script>
+<script src="js/client.js"></script>
 
 </body>
 </html>

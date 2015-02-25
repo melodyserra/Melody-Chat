@@ -36,7 +36,7 @@
 }
 
 #cat-img {
-	margin-top:-17px;
+	margin-top:-20px;
 }
 
 .rotate {
@@ -46,4 +46,8 @@
 
 #cat-img:hover {
 	cursor:pointer;
+}
+
+.green-border {
+	border:#00CF76 2px solid;
 }

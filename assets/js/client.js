@@ -65,20 +65,24 @@ $(window).resize(function() {
 	resizeChat();
 });
 
-var titleInterval;
+var titleInterval = null;
 
 function startTitleInterval(name) {
-	$("#chat-input").addClass("green-border");
-	var count = 0;
-	titleInterval = setInterval(function() {
-		count++;
-		$("title").html(name + " says...");
-		
-		if (count === 5) {
-			count = 0;
-			$("title").html("Melody's Chat!");
-		}
-	}, 300);
+	if (titleInterval) {
+		return false;
+	} else {
+		$("#chat-input").addClass("green-border");
+		var count = 0;
+		titleInterval = setInterval(function() {
+			count++;
+			$("title").html(name + " says...");
+			
+			if (count === 5) {
+				count = 0;
+				$("title").html("Melody's Chat!");
+			}
+		}, 300);
+	}
 }
 
 var socket = io();
@@ -148,6 +152,7 @@ function clearTitleInterval() {
 
 	if (titleInterval) {
 		clearInterval(titleInterval);
+		titleInterval = null;
 		$("#chat-input").removeClass("green-border");
 	}
 }
